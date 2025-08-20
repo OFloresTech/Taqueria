@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurante - Menú</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#dc2626',
+                        secondary: '#f59e0b'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Header -->
+    <header class="bg-primary text-white py-6 shadow-lg">
+        <div class="container mx-auto px-4">
+            <h1 class="text-3xl md:text-4xl font-bold text-center">🍖 Restaurante Carnes & Tacos</h1>
+            <p class="text-center mt-2 text-red-100">Auténtica comida mexicana</p>
+        </div>
+    </header>
+
+    <div class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Menu Section -->
+            <div class="lg:col-span-2">
+                <div class="space-y-8">
+                    <!-- Carnes por Kilo -->
+                    <section class="bg-white rounded-lg shadow-md p-6">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b-2 border-primary pb-2">
+                            🥩 Carnes por Kilo
+                        </h2>
+                        <div class="grid gap-4">
+                            <div class="menu-item flex flex-col sm:flex-row justify-between items-start sm:items-center p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow">
+                                <div class="flex-1 mb-3 sm:mb-0">
+                                    <h3 class="font-semibold text-lg">1 kg</h3>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <span class="text-xl font-bold text-primary">$360</span>
+                                    <div class="flex items-center space-x-2">
+                                        <button class="quantity-btn bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded" onclick="updateQuantity(this, -1)">-</button>
+                                        <input type="number" class="quantity-input w-16 text-center border border-gray-300 rounded px-2 py-1" value="0" min="0">
+                                        <button class="quantity-btn bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded" onclick="updateQuantity(this, 1)">+</button>
+                                    </div>
+                                    <button class="add-to-cart bg-primary text-white px-4 py-2 rounded hover:bg-red-700 transition-colors" 
+                                            onclick="addToCart('1 kg', 360, this)">
+                                        Agregar
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="menu-item flex flex-col sm:flex-row justify-between items-start sm:items-center p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow">
+                                <div class="flex-1 mb-3 sm:mb-0">
+                                    <h3 class="font-semibold text-lg">3/4 kg</h3>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <span class="text-xl font-bold text-primary">$300</span>
+                                    <div class="flex items-center space-x-2">
+                                        <button class="quantity-btn bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded" onclick="updateQuantity(this, -1)">-</button>
+                                        <input type="number" class="quantity-input w-16 text-center border border-gray-300 rounded px-2 py-1" value="0" min="0">
+                                        <button class="quantity-btn bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded" onclick="updateQuantity(this, 1)">+</button>
+                                    </div>
+                                    <button class="add-to-cart bg-primary text-white px-4 py-2 rounded hover:bg-red-700 transition-colors" 
+                                            onclick="addToCart('3/4 kg', 300, this)">
+                                        Agregar
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="menu-item flex flex-col sm:flex-row justify-between items-start sm:items-center p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow">
+                                <div class="flex-1 mb-3 sm:mb-0">
+                                    <h3 class="font-semibold text-lg">1/2 kg</h3>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <span class="text-xl font-bold text-primary">$240</span>
+                                    <div class="flex items-center space-x-2">
+                                        <button class="quantity-btn bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded" onclick="updateQuantity(this, -1)">-</button>
+                                        <input type="number" class="quantity-input w-16 text-center border border-gray-300 rounded px-2 py-1" value="0" min="0">
+                                        <button class="quantity-btn bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded" onclick="updateQuantity(this, 1)">+</button>
+                                    </div>
+                                    <button class="add-to-cart bg-primary text-white px-4 py-2 rounded hover:bg-red-700 transition-colors" 
+                                            onclick="addToCart('1/2 kg', 240, this)">
+                                        Agregar
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="menu-item flex flex-col sm:flex-row justify-between items-start sm:items-center p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow">
+                                <div class="flex-1 mb-3 sm:mb-0">
+                                    <h3 class="font-semibold text-lg">1/4 kg</h3>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <span class="text-xl font-bold text-primary">$140</span>
+                                    <div class="flex items-center space-x-2">
+                                        <button class="quantity-btn bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded" onclick="updateQuantity(this, -1)">-</button>
+                                        <input type="number" class="quantity-input w-16 text-center border border-gray-300 rounded px-2 py-1" value="0" min="0">
+                                        <button class="quantity-btn bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded" onclick="updateQuantity(this, 1)">+</button>
+                                    </div>
+                                    <button class="add-to-cart bg-primary text-white px-4 py-2 rounded hover:bg-red-700 transition-colors" 
+                                            onclick="addToCart('1/4 kg', 140, this)">
+                                        Agregar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Tacos -->
+                    <section class="bg-white rounded-lg shadow-md p-6">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b-2 border-primary pb-2">
+                            🌮 Tacos
+                        </h2>
+                        <div class="grid gap-4">
+                            <div class="menu-item flex flex-col sm:flex-row justify-between items-start sm:items-center p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow">
+                                <div class="flex-1 mb-3 sm:mb-0">
+                                    <h3 class="font-semibold text-lg">Taco Asada</h3>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <span class="text-xl font-bold text-primary">$22</span>
+                                    <div class="flex items-center space-x-2">
+                                        <button class="quantity-btn bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded" onclick="updateQuantity(this, -1)">-</button>
+                                        <input type="number" class="quantity-input w-16 text-center border border-gray-300 rounded px-2 py-1" value="0" min="0">
+                                        <button class="quantity-btn bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded" onclick="updateQuantity(this, 1)">+</button>
+                                    </div>
+                                    <button class="add-to-cart bg-primary text-white px-4 py-2 rounded hover:bg-red-700 transition-colors" 
+                                            onclick="addToCart('Taco Asada', 22, this)">
+                                        Agregar
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="menu-item flex flex-col sm:flex-row justify-between items-start sm:items-center p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow">
+                                <div class="flex-1 mb-3 sm:mb-0">
+                                    <h3 class="font-semibold text-lg">Taco Pastor</h3>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <span class="text-xl font-bold text-primary">$22</span>
+                                    <div class="flex items-center space-x-2">
+                                        <button class="quantity-btn bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded" onclick="updateQuantity(this, -1)">-</button>
+                                        <input type="number" class="quantity-input w-16 text-center border border-gray-300 rounded px-2 py-1" value="0" min="0">
+                                        <button class="quantity-btn bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded" onclick="updateQuantity(this, 1)">+</button>
+                                    </div>
+                                    <button class="add-to-cart bg-primary text-white px-4 py-2 rounded hover:bg-red-700 transition-colors" 
+                                            onclick="addToCart('Taco Pastor', 22, this)">
+                                        Agregar
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="menu-item flex flex-col sm:flex-row justify-between items-start sm:items-center p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow">
+                                <div class="flex-1 mb-3 sm:mb-0">
+                                    <h3 class="font-semibold text-lg">Taco Mixto</h3>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <span class="text-xl font-bold text-primary">$25</span>
+                                    <div class="flex items-center space-x-2">
+                                        <button class="quantity-btn bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded" onclick="updateQuantity(this, -1)">-</button>
+                                        <input type="number" class="quantity-input w-16 text-center border border-gray-300 rounded px-2 py-1" value="0" min="0">
+                                        <button class="quantity-btn bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded" onclick="updateQuantity(this, 1)">+</button>
+                                    </div>
+                                    <button class="add-to-cart bg-primary text-white px-4 py-2 rounded hover:bg-red-700 transition-colors" 
+                                            onclick="addToCart('Taco Mixto', 25, this)">
+                                        Agregar
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="menu-item flex flex-col sm:flex-row justify-between items-start sm:items-center p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow">
+                                <div class="flex-1 mb-3 sm:mb-0">
+                                    <h3 class="font-semibold text-lg">Taco Campechano</h3>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <span class="text-xl font-bold text-primary">$30</span>
+                                    <div class="flex items-center space-x-2">
+                                        <button class="quantity-btn bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded" onclick="updateQuantity(this, -1)">-</button>
+                                        <input type="number" class="quantity-input w-16 text-center border border-gray-300 rounded px-2 py-1" value="0" min="0">
+                                        <button class="quantity-btn bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded" onclick="updateQuantity(this, 1)">+</button>
+                                    </div>
+                                    <button class="add-to-cart bg-primary text-white px-4 py-2 rounded hover:bg-red-700 transition-colors" 
+                                            onclick="addToCart('Taco Campechano', 30, this)">
+                                        Agregar
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="menu-item flex flex-col sm:flex-row justify-between items-start sm:items-center p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow">
+                                <div class="flex-1 mb-3 sm:mb-0">
+                                    <h3 class="font-semibold text-lg">Taco Costilla</h3>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <span class="text-xl font-bold text-primary">$30</span>
+                                    <div class="flex items-center space-x-2">
+                                        <button class="quantity-btn bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded" onclick="updateQuantity(this, -1)">-</button>
+                                        <input type="number" class="quantity-input w-16 text-center border border-gray-300 rounded px-2 py-1" value="0" min="0">
+                                        <button class="quantity-btn bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded" onclick="updateQuantity(this, 1)">+</button>
+                                    </div>
+                                    <button class="add-to-cart bg-primary text-white px-4 py-2 rounded hover:bg-red-700 transition-colors" 
+                                            onclick="addToCart('Taco Costilla', 30, this)">
+                                        Agregar
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="menu-item flex flex-col sm:flex-row justify-between items-start sm:items-center p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow">
+                                <div class="flex-1 mb-3 sm:mb-0">
+                                    <h3 class="font-semibold text-lg">Taco Arrachera</h3>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <span class="text-xl font-bold text-primary">$35</span>
+                                    <div class="flex items-center space-x-2">
+                                        <button class="quantity-btn bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded" onclick="updateQuantity(this, -1)">-</button>
+                                        <input type="number" class="quantity-input w-16 text-center border border-gray-300 rounded px-2 py-1" value="0" min="0">
+                                        <button class="quantity-btn bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded" onclick="updateQuantity(this, 1)">+</button>
+                                    </div>
+                                    <button class="add-to-cart bg-primary text-white px-4 py-2 rounded hover:bg-red-700 transition-colors" 
+                                            onclick="addToCart('Taco Arrachera', 35, this)">
+                                        Agregar
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="menu-item flex flex-col sm:flex-row justify-between items-start sm:items-center p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow">
+                                <div class="flex-1 mb-3 sm:mb-0">
+                                    <h3 class="font-semibold text-lg">Taco Sirloin</h3>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <span class="text-xl font-bold text-primary">$35</span>
+                                    <div class="flex items-center space-x-2">
+                                        <button class="quantity-btn bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded" onclick="updateQuantity(this, -1)">-</button>
+                                        <input type="number" class="quantity-input w-16 text-center border border-gray-300 rounded px-2 py-1" value="0" min="0">
+                                        <button class="quantity-btn bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded" onclick="updateQuantity(this, 1)">+</button>
+                                    </div>
+                                    <button class="add-to-cart bg-primary text-white px-4 py-2 rounded hover:bg-red-700 transition-colors" 
+                                            onclick="addToCart('Taco Sirloin', 35, this)">
+                                        Agregar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Complementos -->
+                    <section class="bg-white rounded-lg shadow-md p-6">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b-2 border-primary pb-2">
+                            🥑 Complementos
+                        </h2>
+                        <div class="grid gap-4">
+                            <div class="menu-item flex flex-col sm:flex-row justify-between items-start sm:items-center p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow">
+                                <div class="flex-1 mb-3 sm:mb-0">
+                                    <h3 class="font-semibold text-lg">Frijoles</h3>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <span class="text-xl font-bold text-primary">$20</span>
+                                    <div class="flex items-center space-x-2">
+                                        <button class="quantity-btn bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded" onclick="updateQuantity(this, -1)">-</button>
+                                        <input type="number" class="quantity-input w-16 text-center border border-gray-300 rounded px-2 py-1" value="0" min="0">
+                                        <button class="quantity-btn bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded" onclick="updateQuantity(this, 1)">+</button>
+                                    </div>
+                                    <button class="add-to-cart bg-primary text-white px-4 py-2 rounded hover:bg-red-700 transition-colors" 
+                                            onclick="addToCart('Frijoles', 20, this)">
+                                        Agregar
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="menu-item flex flex-col sm:flex-row justify-between items-start sm:items-center p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow">
+                                <div class="flex-1 mb-3 sm:mb-0">
+                                    <h3 class="font-semibold text-lg">Cebollitas</h3>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <span class="text-xl font-bold text-primary">$20</span>
+                                    <div class="flex items-center space-x-2">
+                                        <button class="quantity-btn bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded" onclick="updateQuantity(this, -1)">-</button>
+                                        <input type="number" class="quantity-input w-16 text-center border border-gray-300 rounded px-2 py-1" value="0" min="0">
+                                        <button class="quantity-btn bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded" onclick="updateQuantity(this, 1)">+</button>
+                                    </div>
+                                    <button class="add-to-cart bg-primary text-white px-4 py-2 rounded hover:bg-red-700 transition-colors" 
+                                            onclick="addToCart('Cebollitas', 20, this)">
+                                        Agregar
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="menu-item flex flex-col sm:flex-row justify-between items-start sm:items-center p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow">
+                                <div class="flex-1 mb-3 sm:mb-0">
+                                    <h3 class="font-semibold text-lg">Guacamole</h3>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <span class="text-xl font-bold text-primary">$30</span>
+                                    <div class="flex items-center space-x-2">
+                                        <button class="quantity-btn bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded" onclick="updateQuantity(this, -1)">-</button>
+                                        <input type="number" class="quantity-input w-16 text-center border border-gray-300 rounded px-2 py-1" value="0" min="0">
+                                        <button class="quantity-btn bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded" onclick="updateQuantity(this, 1)">+</button>
+                                    </div>
+                                    <button class="add-to-cart bg-primary text-white px-4 py-2 rounded hover:bg-red-700 transition-colors" 
+                                            onclick="addToCart('Guacamole', 30, this)">
+                                        Agregar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Customer Information Section -->
+                    <section class="bg-white rounded-lg shadow-md p-6">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b-2 border-primary pb-2">
+                            📍 Información de Entrega
+                        </h2>
+                        <div class="space-y-4">
+                            <!-- Customer Name -->
+                            <div>
+                                <label for="customer-name" class="block text-sm font-semibold text-gray-700 mb-2">
+                                    Nombre del Cliente *
+                                </label>
+                                <input type="text" id="customer-name" 
+                                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                                       placeholder="Ingresa tu nombre completo" required>
+                            </div>
+
+                            <!-- Address -->
+                            <div>
+                                <label for="customer-address" class="block text-sm font-semibold text-gray-700 mb-2">
+                                    Dirección de Entrega *
+                                </label>
+                                <textarea id="customer-address" rows="3"
+                                          class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                                          placeholder="Calle, número, colonia, código postal, ciudad"
+                                          required></textarea>
+                            </div>
+
+                            <!-- Additional Location Info -->
+                            <div>
+                                <label for="location-info" class="block text-sm font-semibold text-gray-700 mb-2">
+                                    Información Adicional para Encontrar la Dirección
+                                </label>
+                                <textarea id="location-info" rows="2"
+                                          class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                                          placeholder="Referencias: entre qué calles, color de casa, puntos de referencia, etc."></textarea>
+                            </div>
+
+                            <!-- Special Instructions -->
+                            <div>
+                                <label for="special-instructions" class="block text-sm font-semibold text-gray-700 mb-2">
+                                    Instrucciones Especiales para el Pedido
+                                </label>
+                                <textarea id="special-instructions" rows="3"
+                                          class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                                          placeholder="Ej: Sin cebolla, extra salsa, carne bien cocida, entregar en recepción, etc."></textarea>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <!-- Cart Section -->
+            <div class="lg:col-span-1">
+                <div class="bg-white rounded-lg shadow-md p-6 sticky top-4">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b-2 border-secondary pb-2">
+                        🛒 Tu Pedido
+                    </h2>
+                    
+                    <div id="cart-items" class="space-y-3 mb-6">
+                        <p class="text-gray-500 text-center py-8">No hay productos en tu pedido</p>
+                    </div>
+
+                    <div class="border-t pt-4">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-xl font-bold">Total:</span>
+                            <span id="total-price" class="text-2xl font-bold text-primary">$0</span>
+                        </div>
+
+                        <button id="whatsapp-btn" class="w-full bg-green-500 text-white py-3 px-4 rounded-lg hover:bg-green-600 transition-colors font-semibold disabled:bg-gray-300 disabled:cursor-not-allowed" 
+                                onclick="sendWhatsAppOrder()" disabled>
+                            📱 Enviar por WhatsApp
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let cart = [];
+        const RESTAURANT_PHONE = "523330582443"; // Replace with actual restaurant phone number
+
+        function updateQuantity(button, change) {
+            const input = button.parentElement.querySelector('.quantity-input');
+            const currentValue = parseInt(input.value) || 0;
+            const newValue = Math.max(0, currentValue + change);
+            input.value = newValue;
+        }
+
+        function addToCart(itemName, price, button) {
+            const quantityInput = button.parentElement.querySelector('.quantity-input');
+            const quantity = parseInt(quantityInput.value) || 0;
+            
+            if (quantity === 0) {
+                alert('Por favor selecciona una cantidad');
+                return;
+            }
+
+            // Check if item already exists in cart
+            const existingItemIndex = cart.findIndex(item => item.name === itemName);
+            
+            if (existingItemIndex > -1) {
+                cart[existingItemIndex].quantity += quantity;
+            } else {
+                cart.push({
+                    name: itemName,
+                    price: price,
+                    quantity: quantity
+                });
+            }
+
+            // Reset quantity input
+            quantityInput.value = 0;
+            
+            updateCartDisplay();
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartDisplay();
+        }
+
+        function updateCartItemQuantity(index, newQuantity) {
+            if (newQuantity <= 0) {
+                removeFromCart(index);
+            } else {
+                cart[index].quantity = newQuantity;
+                updateCartDisplay();
+            }
+        }
+
+        function updateCartDisplay() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const totalPriceElement = document.getElementById('total-price');
+            const whatsappBtn = document.getElementById('whatsapp-btn');
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p class="text-gray-500 text-center py-8">No hay productos en tu pedido</p>';
+                totalPriceElement.textContent = '$0';
+                whatsappBtn.disabled = true;
+                return;
+            }
+
+            let total = 0;
+            let cartHTML = '';
+
+            cart.forEach((item, index) => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                
+                cartHTML += `
+                    <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                        <div class="flex-1">
+                            <h4 class="font-semibold text-sm">${item.name}</h4>
+                            <p class="text-gray-600 text-xs">$${item.price} c/u</p>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="flex items-center space-x-1">
+                                <button class="bg-gray-200 hover:bg-gray-300 px-2 py-1 rounded text-xs" 
+                                        onclick="updateCartItemQuantity(${index}, ${item.quantity - 1})">-</button>
+                                <span class="px-2 text-sm font-semibold">${item.quantity}</span>
+                                <button class="bg-gray-200 hover:bg-gray-300 px-2 py-1 rounded text-xs" 
+                                        onclick="updateCartItemQuantity(${index}, ${item.quantity + 1})">+</button>
+                            </div>
+                            <span class="font-bold text-primary text-sm">$${itemTotal}</span>
+                            <button class="text-red-500 hover:text-red-700 text-xs" 
+                                    onclick="removeFromCart(${index})">🗑️</button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            cartItemsContainer.innerHTML = cartHTML;
+            totalPriceElement.textContent = `$${total}`;
+            whatsappBtn.disabled = false;
+        }
+
+        function validateCustomerInfo() {
+            const name = document.getElementById('customer-name').value.trim();
+            const address = document.getElementById('customer-address').value.trim();
+
+            if (!name) {
+                alert('Por favor ingresa tu nombre');
+                document.getElementById('customer-name').focus();
+                return false;
+            }
+
+            if (!address) {
+                alert('Por favor ingresa tu dirección de entrega');
+                document.getElementById('customer-address').focus();
+                return false;
+            }
+
+            return true;
+        }
+
+        function sendWhatsAppOrder() {
+            if (cart.length === 0) {
+                alert('Tu carrito está vacío');
+                return;
+            }
+
+            // Validate customer information
+            if (!validateCustomerInfo()) {
+                return;
+            }
+
+            // Get customer information
+            const customerName = document.getElementById('customer-name').value.trim();
+            const customerAddress = document.getElementById('customer-address').value.trim();
+            const locationInfo = document.getElementById('location-info').value.trim();
+            const specialInstructions = document.getElementById('special-instructions').value.trim();
+
+            let message = "🍖 *NUEVO PEDIDO - Restaurante Carnes & Tacos* 🌮\n\n";
+            
+            // Customer Information
+            message += "👤 *INFORMACIÓN DEL CLIENTE*\n";
+            message += `📝 Nombre: ${customerName}\n\n`;
+
+            // Address Information
+            message += "📍 *DIRECCIÓN DE ENTREGA*\n";
+            message += `🏠 ${customerAddress}\n`;
+            if (locationInfo) {
+                message += `🗺️ Referencias: ${locationInfo}\n`;
+            }
+            message += "\n";
+
+            // Order Details
+            message += "🛒 *DETALLE DEL PEDIDO*\n";
+            let total = 0;
+
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                message += `• ${item.name} x${item.quantity} - $${itemTotal}\n`;
+            });
+
+            message += `\n💰 *Total: $${total}*\n\n`;
+
+            // Special Instructions
+            if (specialInstructions) {
+                message += "📋 *INSTRUCCIONES ESPECIALES*\n";
+                message += `${specialInstructions}\n\n`;
+            }
+
+            message += "⏰ Tiempo estimado de entrega: 30-45 minutos\n";
+            message += "¡Gracias por tu pedido! 🙏";
+
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/${RESTAURANT_PHONE}?text=${encodedMessage}`;
+            
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Initialize cart display
+        updateCartDisplay();
+    </script>
+</body>
+</html>
